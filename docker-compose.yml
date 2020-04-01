@@ -1,0 +1,16 @@
+version: '3.4'
+services:
+
+  vue-netcore-app:
+    image: vue-netcore-app:${TAG:-latest}
+    build: 
+      context: .
+      dockerfile: ./src/VueNetcoreDDD.Application/Dockerfile
+
+  vue-netcore-web:
+    image: vue-netcore-web:${TAG:-latest}
+    build: 
+      context: ./src/VueNetcoreDDD.Web
+      dockerfile: ./Dockerfile
+    depends_on:
+     - vue-netcore-app
